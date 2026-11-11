@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#f8e9e9">
+  <meta name="description" content="Một lá thư Giáng sinh nhỏ dành riêng cho Châu.">
+  <title>Christmas Letter — Gửi Châu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./main.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
+  <script defer src="./main.js"></script>
+</head>
+<body>
+  <div class="background" aria-hidden="true">
+    <div class="glow glow-one"></div>
+    <div class="glow glow-two"></div>
+    <canvas id="snow-canvas"></canvas>
+  </div>
+
+  <canvas id="particle-canvas" aria-hidden="true"></canvas>
+
+  <div class="sparkle sparkle-one" aria-hidden="true">✦</div>
+  <div class="sparkle sparkle-two" aria-hidden="true">✧</div>
+  <div class="sparkle sparkle-three" aria-hidden="true">✦</div>
+  <div class="sparkle sparkle-four" aria-hidden="true">✧</div>
+
+  <!-- Wind chimes Lottie -->
+  <div class="wind-chime wind-chime-left"  id="lottie-left"  aria-hidden="true"></div>
+  <div class="wind-chime wind-chime-right" id="lottie-right" aria-hidden="true"></div>
+
+  <!-- Gingerbread socks Lottie -->
+  <div class="ginger-socks" id="lottie-socks" aria-hidden="true"></div>
+
+  <main class="page">
+    <header class="intro">
+      <p class="eyebrow"><span></span>MỘT MÓN QUÀ NHỎ<span></span></p>
+      <h1>Một mùa Giáng sinh <em>thật dịu dàng</em></h1>
+      <p class="subtitle">Có một điều Bình muốn gửi đến bạn...</p>
+    </header>
+
+    <section class="letter-stage" aria-label="Phong thư Giáng sinh">
+      <div class="ambient-light" aria-hidden="true"></div>
+
+      <div class="envelope-scene" id="envelope-scene" data-state="closed">
+        <article class="letter" id="letter" aria-hidden="true" tabindex="-1" aria-label="Lá thư Giáng sinh">
+          <div class="letter-inner">
+            <p class="letter-kicker" aria-hidden="true">MỘT LÁ THƯ NHỎ</p>
+            <h2>Chúc mừng<br>Giáng sinh!</h2>
+            <div class="letter-divider"><span></span></div>
+
+            <div class="letter-content">
+              <p class="letter-line">Gửi Châu,</p>
+              <p class="letter-line">
+                Vậy là một mùa Giáng sinh nữa lại đến rồi. Mong rằng mùa đông
+                năm nay sẽ mang đến cho bạn thật nhiều niềm vui, những điều bất
+                ngờ dễ thương và những khoảnh khắc đáng nhớ.
+              </p>
+              <p class="letter-line">
+                Cảm ơn bạn vì đã xuất hiện và trở thành một phần thật đặc biệt
+                trong những ngày tháng vừa qua.
+              </p>
+              <p class="letter-line">
+                Mong bạn luôn giữ được nụ cười, có đủ can đảm để theo đuổi những
+                điều mình yêu thích và luôn tìm thấy chút ấm áp ngay cả trong
+                những ngày lạnh nhất.
+              </p>
+              <p class="letter-line">
+                Chúc bạn một mùa Giáng sinh an lành, hạnh phúc và ngập tràn
+                những điều tuyệt vời nhé!
+              </p>
+            </div>
+
+            <div class="signature">
+              <span>Thân mến,</span>
+              <strong>Bình</strong>
+            </div>
+            <p class="letter-footer" aria-hidden="true">GỬI ĐẾN BẠN VỚI TẤT CẢ SỰ CHÂN THÀNH</p>
+          </div>
+        </article>
+
+        <div class="envelope" aria-hidden="true">
+          <div class="envelope-back"></div>
+          <div class="envelope-pocket"></div>
+          <div class="envelope-fold envelope-fold-left"></div>
+          <div class="envelope-fold envelope-fold-right"></div>
+          <div class="envelope-fold envelope-fold-bottom"></div>
+          <div class="envelope-inner-glow" aria-hidden="true"></div>
+          <div class="envelope-flap"></div>
+          <div class="wax-seal"><span>B</span></div>
+          <div class="envelope-gloss"></div>
+        </div>
+      </div>
+
+      <div class="stage-shadow" aria-hidden="true"></div>
+    </section>
+
+    <section class="action-area" aria-label="Điều khiển phong thư">
+      <button class="open-button" id="open-button" type="button"
+              aria-controls="letter" aria-expanded="false">
+        <span class="button-label">ĐÓNG LÁ THƯ</span>
+        <span class="button-arrow" aria-hidden="true">✕</span>
+      </button>
+      <p class="hint" id="hint" aria-live="polite">Chạm nhẹ để mở món quà này</p>
+    </section>
+
+    <footer class="footer">
+      Được viết riêng cho một người đặc biệt <span>·</span> Giáng sinh
+    </footer>
+  </main>
+</body>
+</html>
