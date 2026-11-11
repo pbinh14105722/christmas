@@ -314,14 +314,7 @@
     lottie.loadAnimation({ ...sharedConfig, container: document.getElementById("lottie-left") });
     lottie.loadAnimation({ ...sharedConfig, container: document.getElementById("lottie-right") });
 
-    // Gingerbread socks — góc dưới phải
-    lottie.loadAnimation({
-      container: document.getElementById("lottie-socks"),
-      path: "./Ginger_bread_socks_Christmas.json",
-      renderer: "svg",
-      loop: true,
-      autoplay: true,
-    });
+
   }
 
   // Đợi lottie CDN sẵn sàng (defer script nên thường đã có)
