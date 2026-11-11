@@ -240,7 +240,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   left: 5%;
   bottom: 24px;
   width: 90%;
-  height: 410px;
+  height: 520px;
   overflow: hidden;
   border: 1px solid #eee0d3;
   border-radius: 3px;
@@ -680,9 +680,9 @@ button, a { -webkit-tap-highlight-color: transparent; }
   /* Tăng max-width subtitle từ 300 → 340px: tận dụng không gian ngang trên phone lớn */
   .subtitle { max-width: 340px; margin: 12px auto 0; font-size: 12px; }
   /* Thêm 16px khoảng cách giữa intro và phong bì — trước đây là 0px (dán chặt) */
-  .letter-stage { width: 100%; height: 465px; margin-top: 16px; }
-  .envelope-scene { width: min(360px, calc(100vw - 42px)); height: 440px; }
-  .letter { bottom: 24px; height: 410px; }
+  .letter-stage { width: 100%; height: 575px; margin-top: 16px; }
+  .envelope-scene { width: min(360px, calc(100vw - 42px)); height: 550px; }
+  .letter { bottom: 24px; height: 520px; }
   .letter-inner { padding: 24px 24px 20px; }
   .letter h2 { font-size: 27px; }
   .letter-content { font-size: 13.5px; line-height: 1.65; }
@@ -707,9 +707,9 @@ button, a { -webkit-tap-highlight-color: transparent; }
 /* Compact phones */
 @media (max-width: 380px) {
   .page { padding-inline: 14px; }
-  .letter-stage { height: 450px; }
+  .letter-stage { height: 560px; }
   .envelope-scene { width: calc(100vw - 36px); }
-  .letter { height: 400px; }
+  .letter { height: 510px; }
   .letter-inner { padding: 22px 20px 18px; }
   .letter-content { font-size: 13px; line-height: 1.62; }
   .letter h2 { font-size: 25px; }
@@ -721,9 +721,9 @@ button, a { -webkit-tap-highlight-color: transparent; }
 @media (max-height: 740px) and (max-width: 900px) {
   .page { justify-content: flex-start; }
   /* Giảm margin trên màn thấp để nội dung không bị đẩy quá xa */
-  .letter-stage { height: 445px; margin-top: 10px; }
+  .letter-stage { height: 555px; margin-top: 10px; }
   .action-area { margin-top: 8px; }
-  .letter { height: 395px; }
+  .letter { height: 500px; }
   .letter-inner { padding-top: 21px; }
   .letter-content { font-size: 12.5px; }
 }
