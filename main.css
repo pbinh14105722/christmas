@@ -123,25 +123,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .wind-chime-right { right: -30px; }
 }
 
-/* ── Gingerbread socks ──────────────────────────────────── */
-.ginger-socks {
-  position: fixed;
-  bottom: -20px;        /* Nhô xuống dưới viewport một chút — như treo lên */
-  right: -10px;
-  z-index: 3;
-  width: 200px;
-  height: 200px;
-  pointer-events: none;
-  opacity: 0;
-  animation: socks-fade-in 1.6s ease 1.2s forwards;
-}
-@keyframes socks-fade-in {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-@media (max-width: 600px) {
-  .ginger-socks { width: 130px; height: 130px; bottom: -12px; right: -8px; }
-}
+
 
 .page {
   position: relative;
@@ -240,13 +222,13 @@ button, a { -webkit-tap-highlight-color: transparent; }
   left: 5%;
   bottom: 24px;
   width: 90%;
-  height: 410px;
+  height: 520px;
   overflow: hidden;
   border: 1px solid #eee0d3;
   border-radius: 3px;
   background: linear-gradient(145deg, #fffdf8 0%, #fff9ef 100%);
   box-shadow: 0 8px 24px rgba(140,101,93,.12);
-  transform: translateY(218px);
+  transform: translateY(324px);
   transform-origin: 50% 100%;
   transition:
     transform 1.05s cubic-bezier(.18,.78,.2,1) .28s,
@@ -421,15 +403,18 @@ button, a { -webkit-tap-highlight-color: transparent; }
     transform .48s cubic-bezier(.2,.8,.2,1) .1s;
 }
 .wax-seal span {
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 23px; height: 23px;
   border: 1px solid rgba(255,238,228,.8);
   border-radius: 50%;
   font-family: "Caveat", cursive;
   font-size: 17px;
   font-weight: 700;
-
+  line-height: 1;
+  padding-top: 1px;   /* optical correction cho Caveat */
+  padding-left: 1px;  /* optical correction cho Caveat */
 }
 /* 💫 Ripple rings lan toả từ con dấu — thu hút ánh nhìn khi trang idle */
 .wax-seal::before,
@@ -681,9 +666,9 @@ button, a { -webkit-tap-highlight-color: transparent; }
   /* Tăng max-width subtitle từ 300 → 340px: tận dụng không gian ngang trên phone lớn */
   .subtitle { max-width: 340px; margin: 12px auto 0; font-size: 12px; }
   /* Thêm 16px khoảng cách giữa intro và phong bì — trước đây là 0px (dán chặt) */
-  .letter-stage { width: 100%; height: 465px; margin-top: 16px; }
-  .envelope-scene { width: min(360px, calc(100vw - 42px)); height: 440px; }
-  .letter { bottom: 24px; height: 410px; }
+  .letter-stage { width: 100%; height: 575px; margin-top: 16px; }
+  .envelope-scene { width: min(360px, calc(100vw - 42px)); height: 550px; }
+  .letter { bottom: 24px; height: 520px; }
   .letter-inner { padding: 24px 24px 20px; }
   .letter h2 { font-size: 27px; }
   .letter-content { font-size: 13.5px; line-height: 1.65; }
@@ -708,9 +693,9 @@ button, a { -webkit-tap-highlight-color: transparent; }
 /* Compact phones */
 @media (max-width: 380px) {
   .page { padding-inline: 14px; }
-  .letter-stage { height: 450px; }
+  .letter-stage { height: 560px; }
   .envelope-scene { width: calc(100vw - 36px); }
-  .letter { height: 400px; }
+  .letter { height: 510px; }
   .letter-inner { padding: 22px 20px 18px; }
   .letter-content { font-size: 13px; line-height: 1.62; }
   .letter h2 { font-size: 25px; }
@@ -722,9 +707,9 @@ button, a { -webkit-tap-highlight-color: transparent; }
 @media (max-height: 740px) and (max-width: 900px) {
   .page { justify-content: flex-start; }
   /* Giảm margin trên màn thấp để nội dung không bị đẩy quá xa */
-  .letter-stage { height: 445px; margin-top: 10px; }
+  .letter-stage { height: 555px; margin-top: 10px; }
   .action-area { margin-top: 8px; }
-  .letter { height: 395px; }
+  .letter { height: 500px; }
   .letter-inner { padding-top: 21px; }
   .letter-content { font-size: 12.5px; }
 }
