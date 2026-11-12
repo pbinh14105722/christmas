@@ -300,6 +300,76 @@
   createBokeh();
   startSnow();
 
+  /* ── Background music ──────────────────────────────── */
+  const music   = document.getElementById("bg-music");
+  const musicBtn = document.getElementById("music-btn");
+
+  if (music && musicBtn) {
+    music.volume = 0.35;
+
+    // Chiến lược autoplay:
+    // 1. Thử play thẳng (hoạt động nếu user đã tương tác với trang trước)
+    // 2. Nếu bị chặn → muted autoplay → fade volume lên dần
+    // 3. Nếu vẫn bị chặn → chờ lần chạm/click đầu tiên
+    function startMusic() {
+      music.muted = false;
+      music.volume = 0.35;
+      music.play().catch(() => {});
+    }
+
+    function tryAutoplay() {
+      music.muted = false;
+      const p = music.play();
+      if (p !== undefined) {
+        p.catch(() => {
+          // Fallback: muted trước để vượt chính sách autoplay
+          music.muted = true;
+          music.play().then(() => {
+            // Unmute + fade in volume dần
+            music.muted = false;
+            music.volume = 0;
+            let vol = 0;
+            const fade = setInterval(() => {
+              vol = Math.min(vol + 0.05, 0.35);
+              music.volume = vol;
+              if (vol >= 0.35) clearInterval(fade);
+            }, 100);
+          }).catch(() => {
+            // Trình duyệt chặn hoàn toàn → chờ user chạm
+            const unlock = () => {
+              startMusic();
+              document.removeEventListener("click",     unlock);
+              document.removeEventListener("touchstart", unlock);
+            };
+            document.addEventListener("click",     unlock, { once: true });
+            document.addEventListener("touchstart", unlock, { once: true });
+          });
+        });
+      }
+    }
+
+    // Chạy ngay khi trang load
+    if (document.readyState === "complete") {
+      tryAutoplay();
+    } else {
+      window.addEventListener("load", tryAutoplay);
+    }
+
+    // Nút bật/tắt nhạc
+    let muted = false;
+    musicBtn.addEventListener("click", () => {
+      muted = !muted;
+      music.muted = muted;
+      musicBtn.textContent  = muted ? "🔇" : "🎵";
+      musicBtn.title        = muted ? "Bật nhạc" : "Tắt nhạc";
+      musicBtn.setAttribute("aria-label", muted ? "Bật nhạc" : "Tắt nhạc");
+      musicBtn.classList.toggle("muted", muted);
+
+      // Nếu nhạc chưa chạy (bị chặn trước đó) thì play luôn khi user click btn
+      if (!muted && music.paused) startMusic();
+    });
+  }
+
   /* ── Wind chimes Lottie ────────────────────────────── */
   function initWindChimes() {
     if (typeof lottie === "undefined") return; // CDN chưa load
