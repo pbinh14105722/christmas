@@ -423,13 +423,14 @@ button, a { -webkit-tap-highlight-color: transparent; }
   display: grid;
   place-items: center;
   width: 49px; height: 49px;
-  border: 1px solid rgba(255,255,255,.27);
-  border-radius: 50%;
+  border: none;
+  border-radius: 0;
   color: #fff1e8;
-  background: radial-gradient(circle at 34% 27%, #e6a9b2, #c8798d 68%, #b96b7d);
+  background: radial-gradient(circle at 34% 27%, #ff6b6b, #e02020 68%, #c0001a);
+  clip-path: path('M24.5 44 C24.5 44 4 30 4 16.5 C4 9.6 9.6 4 16.5 4 C20.4 4 23.9 5.9 24.5 8.5 C25.1 5.9 28.6 4 32.5 4 C39.4 4 45 9.6 45 16.5 C45 30 24.5 44 24.5 44 Z');
   box-shadow:
-    0 5px 12px rgba(148,79,96,.24),
-    inset 0 2px 3px rgba(255,255,255,.42);
+    0 5px 14px rgba(180,0,30,.35),
+    0 2px 6px rgba(180,0,30,.2);
   transform: translate(-50%, -50%);
   transition:
     opacity .3s ease .12s,
@@ -441,14 +442,14 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .wax-seal::after {
   content: '';
   position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  border: 2px solid rgba(201,130,142,.55);
+  inset: -4px;
+  clip-path: path('M28.5 52 C28.5 52 4 35 4 18.5 C4 9.6 11.6 2 20.5 2 C24.8 2 28.6 3.9 28.5 7 C28.4 3.9 32.2 2 36.5 2 C45.4 2 53 9.6 53 18.5 C53 35 28.5 52 28.5 52 Z');
+  border: 2px solid rgba(224,32,32,.45);
   pointer-events: none;
   animation: sealRipple 2.5s ease-out 2.5s infinite;
 }
 .wax-seal::after {
-  border-color: rgba(201,163,90,.4);
+  border-color: rgba(255,80,80,.3);
   animation-delay: 3.6s;
 }
 /* Dừng ripple khi thư đã mở */
