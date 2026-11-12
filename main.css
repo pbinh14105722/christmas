@@ -89,6 +89,38 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .sparkle-three { bottom: 19%; left: 17%; font-size: 14px; animation-delay: -2s; }
 .sparkle-four { bottom: 27%; right: 15%; font-size: 17px; animation-delay: -.6s; }
 
+/* ── Music toggle button ────────────────────────────────── */
+.music-btn {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 100;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 2px 12px rgba(180,120,120,.18);
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform .2s ease, background .2s ease;
+  animation: music-btn-fade-in 1.5s ease 1s both;
+}
+.music-btn:hover { transform: scale(1.12); background: rgba(255,255,255,.38); }
+.music-btn.muted { filter: grayscale(1); opacity: .6; }
+@keyframes music-btn-fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@media (max-width: 600px) {
+  .music-btn { bottom: 14px; left: 14px; width: 36px; height: 36px; font-size: 16px; }
+}
+
 /* ── Wind chimes Lottie ─────────────────────────────────── */
 .wind-chime {
   position: fixed;
