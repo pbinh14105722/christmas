@@ -127,19 +127,18 @@
       <div class="stage-shadow" aria-hidden="true"></div>
     </section>
 
-  </main>
+    <section class="action-area" aria-label="Điều khiển phong thư">
+      <button class="open-button" id="open-button" type="button"
+              aria-controls="letter" aria-expanded="false">
+        <span class="button-label">ĐÓNG LÁ THƯ</span>
+        <span class="button-arrow" aria-hidden="true">✕</span>
+      </button>
+      <p class="hint" id="hint" aria-live="polite">Chạm nhẹ để mở món quà này</p>
+    </section>
 
-  <!-- Hint + footer cố định ở cuối màn hình, không di chuyển theo phong bì -->
-  <div class="bottom-fixed">
-    <button class="open-button" id="open-button" type="button"
-            aria-controls="letter" aria-expanded="false">
-      <span class="button-label">ĐÓNG LÁ THƯ</span>
-      <span class="button-arrow" aria-hidden="true">✕</span>
-    </button>
-    <p class="hint" id="hint" aria-live="polite">Chạm nhẹ để mở món quà này</p>
     <footer class="footer">
       Được viết riêng cho một người đặc biệt <span>·</span> Giáng sinh
     </footer>
-  </div>
+  </main>
 </body>
 </html>
