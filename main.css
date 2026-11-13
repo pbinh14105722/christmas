@@ -172,7 +172,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   padding:
     max(28px, env(safe-area-inset-top))
     clamp(16px, 4vw, 28px)
-    max(24px, env(safe-area-inset-bottom));
+    120px; /* chừa chỗ cho .bottom-fixed */
 }
 
 /* Intro */
@@ -553,17 +553,23 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 /* Controls stay outside the animated letter area.
    Stage ở z:0 → z:3 ở đây đủ để button luôn nằm trên letter overflow. */
-.action-area {
-  position: relative;
-  z-index: 3;
-  /* Xuất hiện sau phong bì để tạo sequence có nhịp điệu */
-  animation: fade-up .6s ease .9s both;
+.bottom-fixed {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  width: 100%;
-  margin-top: 0;
+  padding: 14px 20px max(20px, env(safe-area-inset-bottom));
+  animation: fade-up .6s ease .9s both;
+  /* Glassmorphism nhẹ để không che mất nền */
+  background: linear-gradient(to top, rgba(248,230,235,.72) 60%, transparent);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  pointer-events: auto;
 }
 .open-button {
   display: inline-flex;
@@ -622,9 +628,9 @@ button, a { -webkit-tap-highlight-color: transparent; }
   text-align: center;
 }
 .footer {
-  margin-top: 19px;
-  color: #806065; /* a11y fix: 2.71:1 → 5.41:1 (was #b29493) */
-  font-size: 11px; /* Fix 4: 9→11px */
+  margin-top: 4px;
+  color: #806065;
+  font-size: 11px;
   letter-spacing: .35px;
   text-align: center;
 }
@@ -707,8 +713,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .signature strong { font-size: 36px; }
   .envelope { bottom: 20px; height: 205px; }
   .wax-seal { width: 46px; height: 46px; }
-  /* Thêm 12px khoảng cách giữa phong bì và button — trước đây là 0px */
-  .action-area { margin-top: 12px; }
+  .bottom-fixed { padding: 12px 16px max(16px, env(safe-area-inset-bottom)); }
   /* Tăng button: cao hơn (52→54px) và rộng hơn (198→210px) cho dễ chạm */
   .open-button { min-width: 210px; min-height: 54px; }
   /* Tăng hint từ 10px → 11px: dễ đọc hơn trên màn nhỏ */
@@ -743,7 +748,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .letter-stage.is-open { height: 530px; }
   .envelope-scene { height: 245px; }
   .envelope-scene.is-open { height: 530px; }
-  .action-area { margin-top: 8px; }
+  .bottom-fixed { padding-top: 10px; }
   .letter { height: 500px; }
   .letter-inner { padding-top: 21px; }
   .letter-content { font-size: 12.5px; }
