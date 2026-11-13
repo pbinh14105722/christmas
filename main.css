@@ -210,15 +210,13 @@ button, a { -webkit-tap-highlight-color: transparent; }
 /* Stage */
 .letter-stage {
   position: relative;
-  /* isolation:isolate tạo stacking context VÀ flatten 3D của children —
-     cần thiết để overflow:hidden bên dưới clip được giấy thư đúng cách.
-     Browser không clip được children trong preserve-3d context bằng overflow. */
   isolation: isolate;
   display: grid;
   place-items: center;
   width: min(100%, 460px);
   height: 280px;
-  margin: 16px auto 0;
+  margin: auto;      /* căn giữa theo cả 2 trục trong flex column */
+  flex-shrink: 0;    /* không bị co lại */
   overflow: hidden;
   perspective: 1200px;
   /* 📬 Entrance: phong bì "được giao" từ trên xuống khi tải trang */
@@ -694,7 +692,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   /* Tăng max-width subtitle từ 300 → 340px: tận dụng không gian ngang trên phone lớn */
   .subtitle { max-width: 340px; margin: 12px auto 0; font-size: 12px; }
   /* Thêm 16px khoảng cách giữa intro và phong bì — trước đây là 0px (dán chặt) */
-  .letter-stage { width: 100%; height: 260px; margin-top: 16px; }
+  .letter-stage { width: 100%; height: 260px; margin: auto; }
   .letter-stage.is-open { height: 550px; }
   .envelope-scene { width: min(360px, calc(100vw - 42px)); height: 260px; }
   .envelope-scene.is-open { height: 550px; }
