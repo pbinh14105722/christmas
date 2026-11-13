@@ -217,7 +217,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   display: grid;
   place-items: center;
   width: min(100%, 460px);
-  height: 440px;
+  height: 280px;
   margin: 16px auto 0;
   overflow: hidden;
   perspective: 1200px;
@@ -237,7 +237,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .envelope-scene {
   position: relative;
   width: min(360px, calc(100vw - 48px));
-  height: 440px;
+  height: 280px;
   /* Clip 20px phía dưới = đúng bằng khoảng cách từ viền dưới envelope
      (bottom:20px) đến đáy scene. Giấy thư ở z:2 không lọt qua khoảng
      trống này nữa. Giá trị 20px không đổi theo responsive (envelope
@@ -510,7 +510,14 @@ button, a { -webkit-tap-highlight-color: transparent; }
 }
 
 /* Open state: the paper rises above the envelope; controls remain below. */
-.letter-stage.is-open { overflow: visible; }
+.letter-stage {
+  transition: height .9s cubic-bezier(.18,.78,.2,1);
+}
+.envelope-scene {
+  transition: height .9s cubic-bezier(.18,.78,.2,1);
+}
+.letter-stage.is-open { overflow: visible; height: 440px; }
+.envelope-scene.is-open { height: 440px; }
 .envelope-scene.is-open .letter {
   z-index: 9;
   overflow-y: auto;
@@ -687,8 +694,10 @@ button, a { -webkit-tap-highlight-color: transparent; }
   /* Tăng max-width subtitle từ 300 → 340px: tận dụng không gian ngang trên phone lớn */
   .subtitle { max-width: 340px; margin: 12px auto 0; font-size: 12px; }
   /* Thêm 16px khoảng cách giữa intro và phong bì — trước đây là 0px (dán chặt) */
-  .letter-stage { width: 100%; height: 550px; margin-top: 16px; }
-  .envelope-scene { width: min(360px, calc(100vw - 42px)); height: 550px; }
+  .letter-stage { width: 100%; height: 260px; margin-top: 16px; }
+  .letter-stage.is-open { height: 550px; }
+  .envelope-scene { width: min(360px, calc(100vw - 42px)); height: 260px; }
+  .envelope-scene.is-open { height: 550px; }
   .letter { bottom: 24px; height: 520px; }
   .letter-inner { padding: 24px 24px 20px; }
   .letter h2 { font-size: 27px; }
@@ -714,8 +723,10 @@ button, a { -webkit-tap-highlight-color: transparent; }
 /* Compact phones */
 @media (max-width: 380px) {
   .page { padding-inline: 14px; }
-  .letter-stage { height: 540px; }
-  .envelope-scene { width: calc(100vw - 36px); height: 540px; }
+  .letter-stage { height: 250px; }
+  .letter-stage.is-open { height: 540px; }
+  .envelope-scene { width: calc(100vw - 36px); height: 250px; }
+  .envelope-scene.is-open { height: 540px; }
   .letter { height: 510px; }
   .letter-inner { padding: 22px 20px 18px; }
   .letter-content { font-size: 13px; line-height: 1.62; }
@@ -728,8 +739,10 @@ button, a { -webkit-tap-highlight-color: transparent; }
 @media (max-height: 740px) and (max-width: 900px) {
   .page { justify-content: flex-start; }
   /* Giảm margin trên màn thấp để nội dung không bị đẩy quá xa */
-  .letter-stage { height: 530px; margin-top: 10px; }
-  .envelope-scene { height: 530px; }
+  .letter-stage { height: 245px; margin-top: 10px; }
+  .letter-stage.is-open { height: 530px; }
+  .envelope-scene { height: 245px; }
+  .envelope-scene.is-open { height: 530px; }
   .action-area { margin-top: 8px; }
   .letter { height: 500px; }
   .letter-inner { padding-top: 21px; }
