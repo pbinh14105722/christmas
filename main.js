@@ -265,7 +265,22 @@
   function setLetterState(nextOpened) {
     opened = nextOpened;
 
-    // Toggle class is-open trên 3 element — CSS lo phần còn lại
+    if (!opened) {
+      // Đóng: tắt transition, ẩn thư ngay lập tức
+      letter.style.transition = "none";
+      letter.style.transform  = "translateY(324px)";
+      letter.style.opacity    = "0";
+
+      // Sau 1 frame restore lại transition để lần mở sau vẫn có animation
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          letter.style.transition = "";
+          letter.style.transform  = "";
+          letter.style.opacity    = "";
+        });
+      });
+    }
+
     scene.classList.toggle("is-open", opened);
     stage.classList.toggle("is-open", opened);
     page .classList.toggle("is-open", opened);
